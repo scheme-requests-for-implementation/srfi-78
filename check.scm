@@ -1,4 +1,4 @@
-; Copyright (c) 2005 Sebastian Egner.
+; Copyright (c) 2005-2006 Sebastian Egner.
 ; 
 ; Permission is hereby granted, free of charge, to any person obtaining
 ; a copy of this software and associated documentation files (the
@@ -29,6 +29,7 @@
 ;
 ; history of this file:
 ;   SE, 25-Oct-2004: first version based on code used in SRFIs 42 and 67
+;   SE, 19-Jan-2006: (arg ...) made optional in check-ec
 ;
 ; Naming convention "check:<identifier>" is used only internally.
 
@@ -197,18 +198,9 @@
 				  actual-result 
 				  expected-result)))))
 
-(define-syntax check-ec
-  (syntax-rules (nested =>)
-    ((check-ec (nested q1 ...) q etc1 etc2 etc3 etc4 etc ...)
-     (check-ec (nested q1 ... q) etc1 etc2 etc3 etc4 etc ...))
-    ((check-ec q1 q2             etc1 etc2 etc3 etc4 etc ...)
-     (check-ec (nested q1 q2)    etc1 etc2 etc3 etc4 etc ...))
-    ((check-ec expr evals-to expected (arg ...))
-     (check-ec (nested) expr evals-to expected (arg ...)))
-    ((check-ec q expr => expected (arg ...))
-     (check-ec q expr (=> equal?) expected (arg ...)))
-    
-    ((check-ec qualifiers expr (=> equal) expected (arg ...))
+(define-syntax check-ec:make
+  (syntax-rules (=>)
+    ((check-ec:make qualifiers expr (=> equal) expected (arg ...))
      (if (>= check:mode 1)
          (check:proc-ec
 	  (let ((cases 0))
@@ -238,3 +230,28 @@
 
 ; (*) is a compile-time check that (arg ...) is a list
 ; of pairwise disjoint bound variables at this point.
+
+(define-syntax check-ec
+  (syntax-rules (nested =>)
+    ((check-ec expr => expected)
+     (check-ec:make (nested) expr (=> equal?) expected ()))
+    ((check-ec expr (=> equal) expected)
+     (check-ec:make (nested) expr (=> equal) expected ()))
+    ((check-ec expr => expected (arg ...))
+     (check-ec:make (nested) expr (=> equal?) expected (arg ...)))
+    ((check-ec expr (=> equal) expected (arg ...))
+     (check-ec:make (nested) expr (=> equal) expected (arg ...)))
+
+    ((check-ec qualifiers expr => expected)
+     (check-ec:make qualifiers expr (=> equal?) expected ()))
+    ((check-ec qualifiers expr (=> equal) expected)
+     (check-ec:make qualifiers expr (=> equal) expected ()))
+    ((check-ec qualifiers expr => expected (arg ...))
+     (check-ec:make qualifiers expr (=> equal?) expected (arg ...)))
+    ((check-ec qualifiers expr (=> equal) expected (arg ...))
+     (check-ec:make qualifiers expr (=> equal) expected (arg ...)))
+
+    ((check-ec (nested q1 ...) q etc ...)
+     (check-ec (nested q1 ... q) etc ...))
+    ((check-ec q1 q2             etc ...)
+     (check-ec (nested q1 q2)    etc ...))))

@@ -1,4 +1,4 @@
-; Copyright (c) 2005 Sebastian Egner.
+; Copyright (c) 2005-2006 Sebastian Egner.
 ; 
 ; Permission is hereby granted, free of charge, to any person obtaining
 ; a copy of this software and associated documentation files (the
@@ -32,11 +32,13 @@
 
 ; -- portability --
 
-; PLT:      (require (lib "23.ss" "srfi") (lib "42.ss" "srfi"))
-;           (load "check.scm") (load "examples.scm")
+; PLT:
+; (require (lib "23.ss" "srfi") (lib "42.ss" "srfi")) (load "check.scm")
+; (load "examples.scm")
 
-; Scheme48: ,open srfi-23 srfi-42
-;           ,load check.scm examples.scm
+; Scheme48: 
+; ,open srfi-23 srfi-42
+; ,load check.scm examples.scm
 
 ; -- simple test --
 
@@ -50,13 +52,15 @@
 
 ; -- parametric tests --
 
-(check-ec (+ 1 1) => 2 ())
+(check-ec (+ 1 1) => 2)
 
 (check-ec (: x 10) (+ x 1) => (+ x 1) (x))
 
 (check-ec (: e 100) (positive? (expt 2 e)) => #t (e)) ; fails on fixnums
 
 (check-ec (: e 100) (:let x (expt 2.0 e)) (= (+ x 1) x) => #f (x)) ; fails
+
+(check-ec (: e 100) (:let x (expt 2.0 e)) (= (+ x 1) x) => #f)
 
 (check-ec (: x 10) (: y 10) (: z 10)
           (* x (+ y z)) => (+ (* x y) (* x z))
