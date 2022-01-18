@@ -153,7 +153,7 @@ Design considerations for this SRFI include the following:
 <H1>Specification</H1>
 
 <DL>
-<DT><CODE>
+<DT id="check"><CODE>
 (check &lt;expr&gt; (=&gt; &lt;equal&gt;) &lt;expected&gt;)                                   </CODE>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MACRO<CODE><BR>
 (check &lt;expr&gt;  =&gt;          &lt;expected&gt;)
 </CODE></DT>
@@ -171,7 +171,7 @@ Design considerations for this SRFI include the following:
 </DL>
 
 <DL>
-<DT><CODE>
+<DT id="check-ec"><CODE>
 (check-ec &lt;qualifier&gt;</CODE>*<CODE> &lt;expr&gt; (=&gt; &lt;equal&gt;) &lt;expected&gt; (&lt;argument&gt;</CODE>*<CODE>))   </CODE>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MACRO<CODE><BR>
 (check-ec &lt;qualifier&gt;</CODE>*<CODE> &lt;expr&gt;  =&gt;          &lt;expected&gt; (&lt;argument&gt;</CODE>*<CODE>))<BR>
 (check-ec &lt;qualifier&gt;</CODE>*<CODE> &lt;expr&gt; (=&gt; &lt;equal&gt;) &lt;expected&gt;)<BR>
@@ -208,7 +208,7 @@ Design considerations for this SRFI include the following:
 </DL>
 
 <DL>
-<DT><CODE>
+<DT id="check-report"><CODE>
 (check-report) </CODE>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PROCEDURE<CODE>
 </CODE></DT>
 <DD>
@@ -218,7 +218,7 @@ Design considerations for this SRFI include the following:
 </DL>
 
 <DL>
-<DT><CODE>
+<DT id="check-set-mode"><CODE>
 (check-set-mode! mode) </CODE>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PROCEDURE<CODE>
 </CODE></DT>
 <DD>
@@ -236,7 +236,7 @@ Design considerations for this SRFI include the following:
 </DL>
 
 <DL>
-<DT><CODE>
+<DT id="check-reset"><CODE>
 (check-reset!) </CODE>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PROCEDURE<CODE>
 </CODE></DT>
 <DD>
@@ -247,7 +247,7 @@ Design considerations for this SRFI include the following:
 </DL>
 
 <DL>
-<DT><CODE>
+<DT id="check-passed"><CODE>
 (check-passed? expected-total-count) </CODE>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PROCEDURE<CODE>
 </CODE></DT>
 <DD>
