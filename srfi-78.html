@@ -1,23 +1,20 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN""http://www.w3.org/TR/REC-html40/loose.dtd">
-<html>
+<html lang="en">
   <head>
     <title>SRFI 78: Lightweight testing</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="/srfi.css" type="text/css" />
+    <link rel="stylesheet" href="https://srfi.schemers.org/srfi.css" type="text/css" />
+    <link href="/favicon.png" rel="icon" sizes="192x192" type="image/png">
   </head>
 
   <body>
 
-<H1>Title</H1>
+<h1><a href="https://srfi.schemers.org/"><img class="srfi-logo" src="https://srfi.schemers.org/srfi-logo.svg" alt="SRFI surfboard logo" /></a>78: Lightweight testing</h1>
 
-Lightweight testing
+<p>by Sebastian Egner</p>
 
-<H1>Author</H1>
-
-Sebastian Egner
-
-<H1>Status</H1>
+<h2>Status</h2>
 
 <p>This SRFI is currently in <em>final</em> status.  Here is <a href="https://srfi.schemers.org/srfi-process.html">an explanation</a> of each status that a SRFI can hold.  To provide input on this SRFI, please send email to <code><a href="mailto:srfi+minus+78+at+srfi+dotschemers+dot+org">srfi-78@<span class="antispam">nospam</span>srfi.schemers.org</a></code>.  To subscribe to the list, follow <a href="https://srfi.schemers.org/srfi-list-subscribe.html">these instructions</a>.  You can access previous messages via the mailing list <a href="https://srfi-email.schemers.org/srfi-78">archive</a>.</p>
 <UL>
@@ -31,7 +28,7 @@ Sebastian Egner
   <LI>2019-10-25 (Fix broken links.)</LI></UL></LI>
 </UL>
 
-<H1>Abstract</H1>
+<h2>Abstract</h2>
 
 A simple mechanism is defined for testing Scheme programs.
 As a most primitive example, the expression
@@ -91,7 +88,7 @@ Other features of this SRFI are:
 <LI>Retrieving a boolean if all checks have been executed and passed.</LI>
 </UL>
 
-<H1>Rationale</H1>
+<h2>Rationale</h2>
 The mechanism defined in this SRFI should be available in
 every Scheme system because it has already proven useful
 for interactive development---of SRFIs. 
@@ -150,7 +147,7 @@ Design considerations for this SRFI include the following:
   infix "<CODE>=&gt;</CODE>" syntax is widely used and intuitive.</LI>
 </UL>
 
-<H1>Specification</H1>
+<h2>Specification</h2>
 
 <DL>
 <DT id="check"><CODE>
@@ -260,7 +257,7 @@ Design considerations for this SRFI include the following:
 </DL>
 
 
-<H1>Implementation</H1>
+<h2>Implementation</h2>
 
 <A HREF="check.scm">check.scm</A>:
   implementation in R5RS + SRFI 23 (error) + SRFI 42 (comprehensions);
@@ -269,7 +266,7 @@ Design considerations for this SRFI include the following:
 <A HREF="examples.scm">examples.scm</A>:
   a few examples.
 
-<H1>References</H1>
+<h2>References</h2>
 
 <UL>
 <LI><A NAME="1">[1]</A> 
@@ -294,7 +291,7 @@ Design considerations for this SRFI include the following:
     <A HREF="https://srfi.schemers.org/srfi-42">http://srfi.schemers.org/srfi-42</A></LI>
 </UL>
 
-<H1>Copyright</H1>
+<h2>Copyright</h2>
 
 Copyright (C) Sebastian Egner (2005-2006). All Rights Reserved.
 <p>
